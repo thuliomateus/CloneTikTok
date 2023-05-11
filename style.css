@@ -1,0 +1,143 @@
+/* Reseta a margem de todos os elementos, bordas são consideradas */
+* {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  /* Define que a rolagem será vertical */
+  html {
+    scroll-snap-type: y mandatory;
+  }
+  
+  
+  /* Cor de textos branca, cor de fundo preta, altura vh*/
+  /* A medida vh é igual a 1/100 da altura da viewport */
+  /* se a altura do navegador é 900px, 1vh equivale a 9px.*/
+  /* display em grade, com itens centralizados*/
+  body {
+    color: white;
+    background-color: black;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .app__videos {
+    position: relative;
+    height: 750px;
+    background-color: white;
+    overflow: scroll;
+    width: 100%;
+    max-width: 400px;
+    scroll-snap-type: y mandatory;
+    border-radius: 20px;
+  }
+/* barra de rolagem invisível */
+.app__videos::-webkit-scrollbar {
+    display: none;
+  }
+
+
+/* é uma propriedade CSS proprietária,
+específica do Internet Explorer e do Microsoft Edge,
+que controla o comportamento das barras de rolagem quando o
+conteúdo de um elemento transborda. */
+/* A propriedade scrollbar-width é usada para definir a largura
+ou espessura da barra de rolagem de um elemento quando mostrado. */
+.app__videos {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .video {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    scroll-snap-align: start;
+  }
+/* Encaixa o conteúdo na parte de vídeos, com altura e largura total*/
+.video__player {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+/* posição relativa, a 48% do topo e a 10px da direita*/
+.videoSidebar {
+    position: absolute;
+    top: 48%;
+    right: 10px;
+  }
+/* ícones com tamanho 28px e o cursor vira uma mão em cima deles */
+.videoSidebar .material-icons {
+    font-size: 28px;
+    cursor: pointer;
+  }
+/* padding de 20px em volta, texto alinhado do centro*/
+.videoSidebar__button {
+    padding: 20px;
+    text-align: center;
+  }
+/* posição relativa, a 150px do fim da tela, margem esquerda de 20px
+textos da cor branca e display flexível*/
+.videoFooter {
+    position: relative;
+    bottom: 150px;
+    margin-left: 20px;
+    color: white;
+    display: flex;
+  }
+/* função para girar o disco */
+@keyframes spinTheRecord {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+/* configura a animação do disco, chamando a função anterior */
+.videoFooter__record {
+    animation: spinTheRecord infinite 5s linear;
+    height: 50px;
+    filter: invert(1);
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+  }
+  /* textos ocupam 100% do espaço flexível */
+.videoFooter__text {
+    flex: 1;
+  }
+/* Texto h3 com padding inferior de 20px */
+.videoFooter__text h3 {
+    padding-bottom: 20px;
+  }
+/* ícone do disco com posição absoluta */
+.videoFooter__icon {
+    position: absolute;
+  }
+/* Espaço com nome da música e disco terá 400px de largura */
+/* display flexível e itens alinhados ao centro */
+.videoFooter__ticket {
+    width: 400px;
+    display: flex;
+    align-items: center;
+  }
+/* nome da música com altura ajustada, margem esquerda de 30px */
+/* e ocupará 60% da largura disponível */
+.videoFooter__ticker marquee {
+    height: fit-content;
+    margin-left: 30px;
+    width: 70%;
+  }
+/* descrição do vídeo com padding de 20px em todas as direções */
+.videoFooter__description {
+    padding-bottom: 20px;
+  }
+/* ajuste da mídia */
+@media (max-width: 425px) {
+    .app__videos {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      border-radius: 0;
+    }
+  }
